@@ -12,6 +12,8 @@ gen_require(`
     type systemd_sysctl_t;
     type hugetlbfs_t;
     type sysfs_t;
+    type nsfs_t;
+    type ifconfig_var_run_t;
     class capability sys_admin;
 ')
 
@@ -157,3 +159,13 @@ allow vpp_t hugetlbfs_t:file map;
 #
 
 allow vpp_t sysfs_t:file map;
+
+########################################
+#
+# lcpng
+#
+
+allow vpp_t nsfs_t:file { read open };
+allow vpp_t vpp_t:netlink_route_socket { nlmsg_read };
+search_dirs_pattern(vpp_t, ifconfig_var_run_t, ifconfig_var_run_t)
+
