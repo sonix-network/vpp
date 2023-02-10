@@ -167,6 +167,7 @@ DPDK_MESON_ARGS = \
 	"-Ddisable_drivers=$(DPDK_DRIVERS_DISABLED)" \
 	"-Ddisable_libs=$(DPDK_LIBS_DISABLED)" \
 	-Db_pie=true \
+        -Dc_args=-DRTE_ETHDEV_PROFILE_WITH_VTUNE \
 	-Dmachine=$(DPDK_MACHINE) \
 	--buildtype=$(DPDK_BUILD_TYPE) \
 	${DPDK_MLX_CONFIG_FLAG}
